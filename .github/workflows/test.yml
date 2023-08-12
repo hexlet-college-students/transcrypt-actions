@@ -1,0 +1,19 @@
+name: test
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [20.x]
+
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v3
+      - run: echo "testing transcrypt!"
+        shell: bash

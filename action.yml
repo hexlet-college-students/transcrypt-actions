@@ -1,0 +1,27 @@
+name: 'Hexlet college transcrypt decoding action'
+description: 'Action for decoding files encrypted with transcrypt'
+
+inputs:
+  PASSWORD:
+    required: true
+
+runs:
+  using: 'composite'
+
+  steps:
+    - uses: actions/checkout@v3
+      with:
+        repository: elasticdog/transcrypt
+        path: transcrypt
+
+    - uses: actions/checkout@v3
+      with:
+        path: app
+    - run: cd app && ../transcrypt/transcrypt -y -p "${{ inputs.PASSWORD }}"
+      shell: bash
+
+    - uses: actions/setup-node@v3
+      with:
+        cache-dependency-path: 'app/package-lock.json'
+        node-version: 20
+        cache: 'npm'
