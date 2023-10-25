@@ -19,7 +19,7 @@ runs:
         path: app
     - run: |
         cd app && ../transcrypt/transcrypt -c aes-256-cbc -p "${{ inputs.PASSWORD }}"
-        printf 'Y\n'
+        printf '\n'
       shell: bash
 
 
