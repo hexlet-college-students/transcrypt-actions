@@ -21,7 +21,7 @@ runs:
         echo $(ls)
         cd app
         echo $(ls)
-        cd app && ../transcrypt/transcrypt -c aes-256-cbc -p "${{ inputs.PASSWORD }}"
+        cd app && ../transcrypt/transcrypt -y -p "${{ inputs.PASSWORD }}"
       shell: bash
 
     - uses: actions/setup-node@v3
