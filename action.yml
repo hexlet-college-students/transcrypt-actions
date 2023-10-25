@@ -19,7 +19,7 @@ runs:
         path: app
     - run: |
         cd app && ../transcrypt/transcrypt -c aes-256-cbc -p "${{ inputs.PASSWORD }}"
-        echo -e "Y\n"
+        echo ls -la
       shell: bash
 
     - uses: actions/setup-node@v3
