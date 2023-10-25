@@ -19,6 +19,8 @@ runs:
         path: app
     - run: |
         echo $(ls)
+        cd app
+        echo $(ls)
         cd app && ../transcrypt/transcrypt -c aes-256-cbc -p "${{ inputs.PASSWORD }}"
       shell: bash
 
