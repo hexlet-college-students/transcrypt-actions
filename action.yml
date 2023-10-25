@@ -18,8 +18,12 @@ runs:
       with:
         path: app
     - run: |
-        cd app && ../transcrypt/transcrypt -c aes-256-cbc -p "${{ inputs.PASSWORD }}"
-        echo -e "\n"
+        cd app && expect -c '
+          spawn ../transcrypt/transcrypt -c aes-256-cbc -p "${{ inputs.PASSWORD }}"
+          expect "Does this look correct? [Y/n]"
+          send "Y\r"
+          expect eof
+        '
       shell: bash
 
     - uses: actions/setup-node@v3
