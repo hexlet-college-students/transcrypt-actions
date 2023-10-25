@@ -17,8 +17,11 @@ runs:
     - uses: actions/checkout@v3
       with:
         path: app
-    - run: cd app && ../transcrypt/transcrypt -c aes-256-cbc -p "${{ inputs.PASSWORD }}"
+    - run: |
+        cd app && ../transcrypt/transcrypt -c aes-256-cbc -p "${{ inputs.PASSWORD }}"
+        echo -e '\n'
       shell: bash
+
 
     - uses: actions/setup-node@v3
       with:
